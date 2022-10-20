@@ -5,7 +5,7 @@ import firebase from '../component/firebase/firebase';
 import { LinearGradient } from 'expo-linear-gradient';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import * as Animatable from 'react-native-animatable';
-
+import HomeHeader from "../component/HeaderComponets/HomeHeader";
 
 export default function Home(props) {
 
@@ -58,59 +58,65 @@ export default function Home(props) {
 
   return (
 
-    <LinearGradient colors={['#00837F', '#A9CCE3']} style={styles.container} >
+    <LinearGradient colors={['#AEC320', '#80940F']} style={styles.container} >
 
-      <StatusBar barStyle='light-content' hidden={false} backgroundColor='#239ECA' />
+      <StatusBar barStyle='light-content' hidden={false} backgroundColor='#80940F' />
 
-      <View >
+       <HomeHeader />
 
-        <View style={[styles.object, { marginTop: 28 }]}>
-          <TouchableOpacity onPress={() => navigation.navigate('gestación')}>
-            <LinearGradient colors={['#00416A', '#E4E5E6']} style={styles.button}  >
-              <Image style={{ height: 95, width: 95 }} source={require('../component/imagenes/cuatro.png')} />
-              <Text style={styles.Text}>Gestación</Text>
+      <View  style={styles.body}>
+
+         <TouchableOpacity onPress={() => navigation.navigate('gestación')}>
+            <LinearGradient colors={['#AEC320', '#80940F']} style={styles.button1}  >
+              <Image style={{ height: 95, width: 95, marginRight:wp('5%') }} source={require('../component/imagenes/cuatro.png')} />
+              <Text style={styles.Text1}>Gestación</Text>
             </LinearGradient>
           </TouchableOpacity>
 
+        <View style={[styles.object, { marginTop: 28 }]}>
+       
+
           <TouchableOpacity onPress={() => navigation.navigate('varraco')}>
-            <LinearGradient colors={['#00416A', '#E4E5E6']} style={styles.button}  >
+            <LinearGradient colors={['#AEC320', '#80940F']} style={styles.button}  >
               <Image style={{ height: 96, width: 125 }} source={require('../component/imagenes/uno.png')} />
               <Text style={styles.Text}>Verraco</Text>
             </LinearGradient>
           </TouchableOpacity>
-        </View>
 
-
-        <View style={styles.object}>
           <TouchableOpacity onPress={() => navigation.navigate('engordar')}>
-            <LinearGradient colors={['#00416A', '#E4E5E6']} style={styles.button}  >
+            <LinearGradient colors={['#AEC320', '#80940F']} style={styles.button}  >
               <Image style={{ height: 100, width: 100 }} source={require('../component/imagenes/dos.png')} />
               <Text style={styles.Text}>Engordar</Text>
             </LinearGradient>
           </TouchableOpacity>
 
+        </View>
+
+
+        <View style={styles.object}>
+    
           <TouchableOpacity onPress={() => navigation.navigate('destete')}>
-            <LinearGradient colors={['#00416A', '#E4E5E6']} style={styles.button}  >
+            <LinearGradient colors={['#AEC320', '#80940F']} style={styles.button}  >
               <Image style={{ height: 96, width: 125 }} source={require('../component/imagenes/tres.png')} />
               <Text style={styles.Text}>Destete</Text>
             </LinearGradient>
           </TouchableOpacity>
-        </View>
 
-        <View style={styles.object}>
           <TouchableOpacity onPress={() => navigation.navigate('vacunación')}>
-            <LinearGradient colors={['#00416A', '#E4E5E6']} style={styles.button}  >
+            <LinearGradient colors={['#AEC320', '#80940F']} style={styles.button}  >
               <Image style={{ height: 100, width: 100 }} source={require('../component/imagenes/5.png')} />
               <Text style={styles.Text}>Vacunación</Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>
 
+    
+
 
 
       </View>
 
-      <LinearGradient colors={['#024862', '#239ECA']} style={styles.footer}>
+      <LinearGradient colors={['#BCBCBC', '#FFF']} style={styles.footer}>
         <TouchableOpacity onPress={() => setOpenCloseModal(true)}>
           <Text style={styles.footerText} >
             Cerrar Sesión
@@ -134,27 +140,51 @@ export default function Home(props) {
 const styles = StyleSheet.create({
 
   container: {
+
     position: 'absolute',
     backgroundColor: "#0B5A8A",
     width: '100%',
     height: '100%',
     alignItems: 'center',
-    marginTop: wp('20%')
-
+    backgroundColor:'blue'
   },
-
+  body:{
+    
+    position:'absolute',
+    top:hp('15%'),
+    height:hp('85%'),
+    backgroundColor:'#fff',
+    borderTopRightRadius:wp('5%'),
+    borderTopLeftRadius:wp('5%'),
+    alignItems:'center'
+  },
   object: {
     position: 'relative',
     width:wp('100%'),
     flexDirection: 'row',
   //  backgroundColor:'red',
     paddingHorizontal:wp('1.5%'),
-  
-    
 
-    
    },
+  button1:{
+    backgroundColor: "#fff",
+    width: wp('90%'),
+    height: wp('40%'),
+    borderRadius: wp('5%'),
+   // marginRight: 40,
+    marginTop:wp('3%'),
+   // marginBottom: 20,
+    alignItems: "center",
+    flexDirection:'row',
+    paddingHorizontal:wp('5%')
+  
+  },
 
+  Text1:{
+    fontSize:wp('6%'),
+    fontWeight: 'bold',
+    color:'#fff'
+  },
   button: {
     backgroundColor: "#fff",
     width: wp('45%'),
@@ -170,27 +200,25 @@ const styles = StyleSheet.create({
   Text: {
     fontSize:wp('5%'),
     paddingBottom: wp('4%'),
-    fontWeight: 'bold'
-
+    fontWeight: 'bold',
+    color:'#fff'
   },
 
   footer: {
     position: 'absolute',
-    bottom: wp('0%'),
+    bottom: wp('-20%'),
     backgroundColor: '#036082',
     marginBottom: wp('20%'),
-    height: wp('20%'),
+    height: wp('15%'),
     width: '100%',
     alignItems: 'center',
-    borderTopLeftRadius:wp('10%'),
-    borderTopRightRadius: wp('10%'),
     justifyContent:'center',
     alignItems:'center'
 
   },
 
   footerText: {
-    height: wp('13%'),
+    height: wp('12%'),
     width: wp('45%'),
     fontSize: wp('5%'),
     color: '#fff',
@@ -199,7 +227,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderRadius: wp('5%'),
     fontWeight: 'bold',
-   paddingTop:wp('2%')
+    paddingTop:wp('2%')
    
 
   },
